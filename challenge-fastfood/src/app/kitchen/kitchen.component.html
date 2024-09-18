@@ -1,0 +1,33 @@
+Pendientes de cocinar
+<ul>
+  @for (pedido of pendientesCocinar; track pedido) {
+  <li>
+    ({{ pedido.number }}) - {{ pedido.description }}
+    <button
+      class="btn btn-primary"
+      type="submit"
+      [disabled]="enCoccion"
+      (click)="cocinarPedido(pedido)"
+    >
+      Cocinar
+    </button>
+  </li>
+  }
+</ul>
+
+Pedidos en cocción
+<ul>
+  <li>
+    ({{ pedidoCoccion.number }}) {{ pedidoCoccion.name }} -
+    {{ pedidoCoccion.description }}
+  </li>
+</ul>
+
+<button
+  class="btn btn-primary"
+  type="submit"
+  [disabled]="!enCoccion"
+  (click)="terminarPedido(pedidoCoccion)"
+>
+  Pedido terminado!
+</button>

@@ -1,0 +1,9 @@
+Pedidos ingresados
+<p>
+    @for (pedido of pedidos; track pedidos) {
+        {{pedido | json}},
+    }
+</p>
+<app-delivery-point></app-delivery-point>   
+<app-pos (onIngresarPedido)="ingresarPedido($event)"></app-pos>
+<app-kitchen></app-kitchen>

@@ -1,0 +1,74 @@
+<div class="container d-flex">
+  <form #form="ngForm" (ngSubmit)="save(form)">
+    <!-- <div class="mb-3">
+      <label for="number" class="form-label">Nro pedido</label>
+      <input
+        type="number"
+        name="number"
+        class="form-control"
+        id="number"
+        #number="ngModel"
+        [(ngModel)]="pedido.number"
+        readonly
+      />
+    </div> -->
+    <div class="mb-3">
+      <label for="name" class="form-label">Nombre</label>
+      <input
+        type="text"
+        name="name"
+        class="form-control"
+        id="name"
+        #name="ngModel"
+        [(ngModel)]="pedido.name"
+        minlength="10"
+        required
+      />
+      @if (name.invalid) { 
+        @if (name.getError('required') && name.dirty) {
+          <span>Campo requerido</span>
+        } 
+        @if (name.getError('minlength')) {
+          <span>Nombre debe tener un minimo de 10 caracteres</span>
+        } 
+      }
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Pedido</label>
+      <input
+        type="text"
+        name="description"
+        class="form-control"
+        id="description"
+        #description="ngModel"
+        [(ngModel)]="pedido.description"
+        maxlength="500"
+        required
+      />
+    </div>
+    @if (name.invalid) { 
+      @if (description.getError('required') && description.dirty) {
+        <span>Campo requerido</span>
+      } 
+      @if (description.getError('maxlength')) {
+        <span>Descripcion debe tener un maximo de 500 caracteres</span>
+      } 
+    }
+    <!-- <div>
+      <label for="date" class="form-label">Fecha</label>
+      <input
+        type="date"
+        name="date"
+        id="date"
+        class="form-control"
+        #date="ngModel"
+        [ngModel]="pedido.date | date:'dd-MM-yyyy'"
+        [min]="today | date:'dd-MM-yyyy'"
+        (ngModelChange)="pedido.date = $event" 
+        required
+      />
+    </div> -->
+    <button class="btn btn-primary" type="submit">Ordenar</button>
+  </form>
+</div>
+
