@@ -16,7 +16,7 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent {
   
-  private pedidoService = inject(PedidoService);
+  //private pedidoService = inject(PedidoService);
   title = 'challenge-fastfood';
 
   pedidos : Pedido[] = [];
@@ -26,10 +26,8 @@ export class AppComponent {
     this.pedidos.push(event);
   }
 
-  cargarPedidoFinal() {
-    
+  quitarPedido(event : Pedido) {
+    this.pedidos = this.pedidos.filter(item => item !== event);
+
   }
-
-
-
 }

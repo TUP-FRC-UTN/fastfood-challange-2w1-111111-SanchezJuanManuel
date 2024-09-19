@@ -29,4 +29,8 @@ export class PedidoService {
   cargarPedidoListo() : Pedido[] {
     return this.listosParaEntregar;
   }
+
+  quitarPedido(index : number, array : Pedido[]) {
+    array.splice(index, 1);
+  }
 }

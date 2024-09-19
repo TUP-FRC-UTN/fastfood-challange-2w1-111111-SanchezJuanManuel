@@ -1,13 +1,13 @@
 Pendientes de cocinar
 <ul>
-  @for (pedido of pendientesCocinar; track pedido) {
+  @for (pedido of pendientesCocinar; track pedido; let index = $index) {
   <li>
     ({{ pedido.number }}) - {{ pedido.description }}
     <button
       class="btn btn-primary"
       type="submit"
       [disabled]="enCoccion"
-      (click)="cocinarPedido(pedido)"
+      (click)="cocinarPedido(pedido, index)"
     >
       Cocinar
     </button>
@@ -17,10 +17,13 @@ Pendientes de cocinar
 
 Pedidos en cocción
 <ul>
-  <li>
-    ({{ pedidoCoccion.number }}) {{ pedidoCoccion.name }} -
-    {{ pedidoCoccion.description }}
-  </li>
+  @for (pedidoCoccion of pedidosEnCoccion; track pedidoCoccion; let index = $index) {
+
+    <li>
+      ({{ pedidoCoccion.number }}) {{ pedidoCoccion.name }} -
+      {{ pedidoCoccion.description }}
+    </li>
+  }
 </ul>
 
 <button

@@ -4,6 +4,6 @@ Pedidos ingresados
         {{pedido | json}},
     }
 </p>
-<app-delivery-point></app-delivery-point>   
+<app-delivery-point (onQuitarPedido)="quitarPedido($event)"></app-delivery-point>   
 <app-pos (onIngresarPedido)="ingresarPedido($event)"></app-pos>
 <app-kitchen></app-kitchen>

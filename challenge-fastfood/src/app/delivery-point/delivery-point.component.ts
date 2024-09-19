@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { PedidoService } from '../services/pedido.service';
 import { Pedido } from '../models/pedido';
 import { CommonModule } from '@angular/common';
@@ -13,8 +13,9 @@ import { CommonModule } from '@angular/common';
 export class DeliveryPointComponent implements OnInit {
 
   pedidosFinal : Pedido[] = [];
-  @Input() index : number = 0;
-  pedidoFinal : Pedido = {} as Pedido;
+  //@Input() index : number = 0;
+  //pedidoFinal : Pedido = {} as Pedido;
+  @Output() onQuitarPedido = new EventEmitter<Pedido>();
   private pedidoService = inject(PedidoService);
 
   ngOnInit(): void {
@@ -23,8 +24,15 @@ export class DeliveryPointComponent implements OnInit {
     
   }
 
-  entregarPedido(pedidoFinal : Pedido) {
-    this.pedidosFinal = this.pedidosFinal.filter(item => item !== pedidoFinal);
+  entregarPedido(index : number, pedidoFinal : Pedido) {
+    //this.pedidosFinal = this.pedidosFinal.filter(item => item !== pedidoFinal);
+    this.pedidoService.quitarPedido(index, this.pedidosFinal);
+    this.quitarPedidoIngresado(pedidoFinal);
+
+  }
+
+  quitarPedidoIngresado(pedidoFinal : Pedido) {
+    this.onQuitarPedido.emit(pedidoFinal);
   }
 
 }

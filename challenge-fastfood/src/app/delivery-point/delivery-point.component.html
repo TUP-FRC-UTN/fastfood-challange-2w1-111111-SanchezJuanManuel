@@ -3,7 +3,7 @@
   @for (pedidoFinal of pedidosFinal; track pedidoFinal; let index = $index) {
   <li>
     {{ pedidoFinal.number }} - {{ pedidoFinal.name }}
-    <button class="btn btn-primary" type="submit" (click)="entregarPedido(pedidoFinal)">
+    <button class="btn btn-primary" type="submit" (click)="entregarPedido(index, pedidoFinal)">
       Entregar!
     </button>
   </li>

@@ -31,7 +31,6 @@ export class PosComponent implements OnInit {
 
   ingresarPedido(pedido : Pedido) {
     this.onIngresarPedido.emit(pedido);
-    console.log(pedido);
   }
 
   save(form: NgForm) {
